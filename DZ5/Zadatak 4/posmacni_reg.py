@@ -15,7 +15,7 @@ def posmacni_mux():
     ans = []
     print(' ')
     vars = int(input("Unesite broj bitova brojila: "))
-    x = [int(s) for s in input("Unesite stanja ciklusa odvojena prazninom: ").split(', ')]
+    x = [int(s) for s in input("Unesite stanja ciklusa: ").split(', ')]
     if x[0] == x[-1]: x.pop()
     stanja = x[:]
 
@@ -40,7 +40,7 @@ def posmacni_dekoder():
     ans = []
     print(' ')
     vars = int(input("Unesite broj bitova brojila: "))
-    x = [int(s) for s in input("Unesite stanja ciklusa odvojena prazninom: ").split(', ')]
+    x = [int(s) for s in input("Unesite stanja ciklusa: ").split(', ')]
     if x[0] == x[-1]: x.pop()
     
     for i in range(len(x)):

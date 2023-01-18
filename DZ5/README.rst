@@ -1,5 +1,5 @@
 
-Python skripte za rjesavanje 1, 3, 4, 6, 9, 10 i 12 zadatka iz 5. zadace
+Python skripte za rjesavanje vecine zadataka iz 5. zadace
 -------
 Instalacija
 -------

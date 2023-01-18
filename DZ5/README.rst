@@ -6,5 +6,5 @@ Instalacija
 
 .. code:: 
  
- 	pip install logicmin
+  pip install logicmin
   git clone https://github.com/Skrgich/DIGLOG

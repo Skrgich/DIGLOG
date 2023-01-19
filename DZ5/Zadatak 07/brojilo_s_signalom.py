@@ -7,7 +7,29 @@ def int_to_binary(integer, size):
         binary_string += str(digit)
         integer = integer // 2
     binary_string = binary_string[::-1]
-    return ('000000' + binary_string)[-size:]
+    return ('000000000' + binary_string)[-size:]
+
+def bistabil_pobuda(bis, poc, sljed):
+    d = {
+        'D': {"00" : "0",
+              "01" : "1",
+              "10" : "0",
+              "11" : "1"},
+        'T': {"00" : "0",
+              "01" : "1",
+              "10" : "1",
+              "11" : "0"},
+        'SR' : {"00" : "0X",
+               "01" : "10",
+               "10" : "01",
+               "11" : "X0"},
+        'JK' : {"00" : "0X",
+                "01" : "1X",
+                "10" : "X1",
+                "11" : "X0"}
+    }
+    return d[bis][poc + sljed]
+
 
 
 def brojilo_u_ciklusu():
@@ -15,7 +37,7 @@ def brojilo_u_ciklusu():
     print(' ')
 
     vars = int(input("Unesite broj bistabila: "))
-    bistabil = input("Unesite tip bistabila (D ili T): ").upper()
+    bistabil = input("Unesite tip bistabila ('D', 'T', 'SR', 'JK'): ").upper()
 
     x = [int_to_binary(i, 2 + vars) for i in range(2 ** (vars + 2))]
     d0 = int(input("Unesite promjenu trenutnog stanja kada je d = 0: "))
@@ -23,24 +45,38 @@ def brojilo_u_ciklusu():
 
 
 
-    t = logicmin.TT(2 + vars, vars)
+    t = logicmin.TT(2 + vars, vars + vars * (bistabil in ['JK', 'SR']))
     for i in range(2 ** (vars + 2)):
         komb = x[i]
-        izlaz = ''.join('0' for _ in range(vars + 2)) if i >= 2 ** (vars + 1) else x[(i + d1 + 2 ** (vars + 1)) % 2 ** (vars + 1)] if i >= 2 ** (vars) else x[(i + d0 + 2 ** (vars + 1)) % 2 ** (vars + 1)]
-        if bistabil == 'D':
-            t.add(komb, izlaz)
-        elif bistabil == 'T':
-            t.add(komb, ''.join('0' if komb[j] == izlaz[j] else '1' for j in range(vars + 2)))
+        temp = ''
+        
+        izlaz = ''.join('0' for _ in range(vars)) if i >= 2 ** (vars + 1) else x[(i + d1 + 2 ** (vars + 1)) % 2 ** (vars + 1)][2:] if i >= 2 ** (vars) else x[(i + d0 + 2 ** (vars + 1)) % 2 ** (vars + 1)][2:]
+
+        for j in range(vars):
+            temp += bistabil_pobuda(bistabil, komb[j + 2], izlaz[j])
+    
+
+        t.add(komb, temp)
+
+        # if bistabil == 'D':
+        #     t.add(komb, izlaz)
+        # elif bistabil == 'T':
+        #     t.add(komb, ''.join('0' if komb[j] == izlaz[j] else '1' for j in range(vars + 2)))
 
         # print(komb, izlaz, ''.join('0' if komb[j] == izlaz[j] else '1' for j in range(vars + 2)))
     
     sols = t.solve()
     rj = str(sols)
-    # print(rj)
+
 
     imena_varijabli = ['Q{}'.format(i, bistabil) for i in range(vars)]
     imena_varijabli.extend(['d', 'c'])
-    imena_izlaza = ['B{}.{}'.format(i, bistabil) for i in range(vars - 1, -1, -1)]
+    imena_izlaza = []
+    for i in range(vars - 1, -1, -1):
+        imena_izlaza.append('{}{}'.format(bistabil[0], i))
+        if bistabil == 'JK' or bistabil == 'SR':
+            imena_izlaza.append('{}{}'.format(bistabil[1], i))
+    
 
     rj = rj.split('\n')
     for i in range(len(rj)):

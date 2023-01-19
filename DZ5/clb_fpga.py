@@ -21,7 +21,7 @@ def CLB_FPGA():
         for j in range(vars):
             temp = temp.replace(chr(65 + j), vr[j]) 
         
-        print("D{:<2}: {}".format(i, eval(temp)))
+        print("D{:<2}: {}".format(i, int(eval(temp))))
     print('\n')
 
 

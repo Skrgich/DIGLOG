@@ -16,7 +16,7 @@ def CLB_FPGA():
     print('')
     for i in range(2 ** vars):
         
-        temp = funkcija.replace('AND', 'and').replace('OR', 'or')
+        temp = funkcija.replace('AND', 'and').replace('OR', 'or').replace('NOT', 'not')
         vr = int_to_binary(i, vars)
         for j in range(vars):
             temp = temp.replace(chr(65 + j), vr[j]) 

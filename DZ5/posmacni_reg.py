@@ -58,7 +58,8 @@ def posmacni_dekoder():
     print(', '.join([str(c) for c in ans]))
     print('\n')
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+def main():
     print("  \nUnesite inacicu zadatka\nM za inacicu s multipleksorom\nD za inacicu s dekoderom")
     inacica = input()
     if inacica.lower() == 'm': posmacni_mux()

@@ -32,7 +32,7 @@ def bistabil_pobuda(bis, poc, sljed):
 
 
 
-def brojilo_u_ciklusu():
+def brojilo_s_signalom():
     d = {}
     print(' ')
 

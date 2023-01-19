@@ -8,4 +8,4 @@ Instalacija
  
   pip install logicmin
   git clone https://github.com/Skrgich/DIGLOG
-  python main.py
+

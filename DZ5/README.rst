@@ -12,3 +12,5 @@ Instalacija
   git clone https://github.com/Skrgich/DIGLOG
   cd DZ5
   python main.py
+
+* Ukoliko imate problema s izvrsavanjem: shorturl.at/iwDSW

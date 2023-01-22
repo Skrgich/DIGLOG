@@ -10,7 +10,7 @@ Instalacija
  
   pip install logicmin
   git clone https://github.com/Skrgich/DIGLOG
-  cd DZ5
+  cd DIGLOG/DZ5
   python main.py
 
 * Ukoliko imate problema s izvrsavanjem: https://shorturl.at/iwDSW

@@ -10,5 +10,5 @@ Instalacija
  
   pip install logicmin
   git clone https://github.com/Skrgich/DIGLOG
-  cd DZ5
+  cd DZ4
   python main.py

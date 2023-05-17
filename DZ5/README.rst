@@ -13,4 +13,5 @@ Instalacija
   cd DIGLOG/DZ5
   python main.py
 
-* Ukoliko imate problema s izvrsavanjem: https://shorturl.at/iwDSW
+..
+    Ukoliko imate problema s izvrsavanjem: https://shorturl.at/iwDSW 
